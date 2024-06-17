@@ -1,18 +1,24 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+  function hasTargetSum(array, target) {
+    const arr = new Set();
+
+    for (let number of array) {
+        const complement = target - number;
+        if (arr.has(complement)) {
+            return true;
+        }
+        arr.add(number);
+    }
+    return false;
 }
 
-/* 
-  Write the Big O time complexity of your function here
-*/
+// Examples:
+console.log(hasTargetSum([1, 2, 3, 4], 5));  // Should return true (1 + 4 or 2 + 3)
+console.log(hasTargetSum([1, 2, 3, 4], 8));  // Should return false
+console.log(hasTargetSum([1, 2, 3, 4], 6));  // Should return true (2 + 4)
+console.log(hasTargetSum([], 5));           // Should return false
 
-/* 
-  Add your pseudocode here
-*/
 
 /*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
